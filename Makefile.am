@@ -270,6 +270,7 @@ libclboss_la_SOURCES = \
 	Boss/Msg/CommandRequest.hpp \
 	Boss/Msg/CommandResponse.hpp \
 	Boss/Msg/DbResource.hpp \
+	Boss/Msg/EndOfOptions.hpp \
 	Boss/Msg/ForwardFee.hpp \
 	Boss/Msg/Init.hpp \
 	Boss/Msg/InternetOnline.hpp \
