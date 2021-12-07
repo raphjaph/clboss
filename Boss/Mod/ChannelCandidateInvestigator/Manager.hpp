@@ -9,6 +9,7 @@
 #include<vector>
 
 namespace Boss { namespace Mod { namespace ChannelCandidateInvestigator { class Gumshoe; }}}
+namespace Boss { namespace Mod { namespace ChannelCandidateInvestigator { class Janitor; }}}
 namespace Boss { namespace Mod { namespace ChannelCandidateInvestigator { class Secretary; }}}
 namespace Boss { namespace Mod { class InternetConnectionMonitor; }}
 namespace S { class Bus; }
@@ -24,6 +25,7 @@ class Manager {
 private:
 	S::Bus& bus;
 	Secretary& secretary;
+	Janitor& janitor;
 	Gumshoe& gumshoe;
 	InternetConnectionMonitor& imon;
 
@@ -42,10 +44,12 @@ public:
 	explicit
 	Manager( S::Bus& bus_
 	       , Secretary& secretary_
+	       , Janitor& janitor_
 	       , Gumshoe& gumshoe_
 	       , InternetConnectionMonitor& imon_
 	       ) : bus(bus_)
 		 , secretary(secretary_)
+		 , janitor(janitor_)
 		 , gumshoe(gumshoe_)
 		 , imon(imon_)
 		 {
