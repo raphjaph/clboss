@@ -10,10 +10,18 @@
 #include"Ev/yield.hpp"
 #include"Jsmn/Object.hpp"
 #include"Json/Out.hpp"
+#include"Ln/Amount.hpp"
 #include"Ln/NodeId.hpp"
 #include"S/Bus.hpp"
 #include<memory>
 #include<sstream>
+
+namespace {
+
+/* Minimum channel size.  TODO: Set centrally somewhere.  */
+auto const min_channel = Ln::Amount::btc(0.00501);
+
+}
 
 namespace Boss { namespace Mod {
 
@@ -89,7 +97,10 @@ private:
 			.start_object()
 				.field("id", std::string(target))
 				.field("fromid", std::string(proposal))
-				.field("msatoshi", "1msat")
+				/* 2x because the dowser will halve the channel
+				 * capacity of the first hop.
+				 */
+				.field("msatoshi", std::string(2.0 * min_channel))
 				/* No real idea how to think about
 				 * riskfactor.
 				 */
